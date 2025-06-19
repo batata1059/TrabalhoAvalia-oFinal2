@@ -3,9 +3,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require 'database.php';
 
     $id = $_POST['id'] ?? '';
-
     if (is_numeric($id)) {
-        $stmt = $db->prepare("DELETE FROM livros WHERE id = :id");
+        $stmt = $db->prepare("UPDATE tarefas SET concluida = 1 WHERE id = :id");
         $stmt->bindValue(':id', $id);
         $stmt->execute();
     }
